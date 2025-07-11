@@ -7,6 +7,7 @@ import { MdEditLocationAlt } from "react-icons/md";
 import { BsDatabaseFillX } from "react-icons/bs";
 
 export async function getServerSideProps(context) {
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
   const auth = context.req.cookies?.auth === "true";
   if (!auth) {
     return {
@@ -17,7 +18,7 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const res = await fetch("http://localhost:3000/api/listings");
+  const res = await fetch(`${baseUrl}/api/listings`);
   const listings = await res.json();
 
   return { props: { listings } };
