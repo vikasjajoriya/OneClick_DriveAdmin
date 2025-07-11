@@ -127,7 +127,7 @@ export default function LoginPage() {
             </div>
 
             <button className="w-full flex items-center justify-center gap-2 border border-gray-200 py-2 rounded-md text-sm font-medium hover:bg-gray-50 uppercase">
-              <Image src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
+              <Image src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width={15} height={15} />
               google
             </button>
           </form>
