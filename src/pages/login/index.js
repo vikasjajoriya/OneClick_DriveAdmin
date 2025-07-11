@@ -37,7 +37,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     const isLoggedIn = document.cookie.includes("auth=true");
-    if (isLoggedIn) router.replace("/dashboard");
+    if (isLoggedIn) router.push("/dashboard");
   }, []);
 
   const onSubmit = (data) => {
