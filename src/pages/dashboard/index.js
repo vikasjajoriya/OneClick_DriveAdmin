@@ -7,8 +7,8 @@ import { MdEditLocationAlt } from "react-icons/md";
 import { BsDatabaseFillX } from "react-icons/bs";
 
 export async function getServerSideProps(context) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
   const auth = context.req.cookies?.auth === "true";
+
   if (!auth) {
     return {
       redirect: {
@@ -18,11 +18,22 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const res = await fetch(`${baseUrl}/api/listings`);
-  const listings = await res.json();
+  const protocol = context.req.headers['x-forwarded-proto'] || 'http';
+  const host = context.req.headers.host;
+  const baseUrl = `${protocol}://${host}`;
 
-  return { props: { listings } };
+  try {
+    const res = await fetch(`${baseUrl}/api/listings`);
+    if (!res.ok) throw new Error("Failed to fetch listings");
+    const listings = await res.json();
+
+    return { props: { listings } };
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { props: { listings: [] } };
+  }
 }
+
 
 export default function Dashboard({ listings }) {
   const router = useRouter();
