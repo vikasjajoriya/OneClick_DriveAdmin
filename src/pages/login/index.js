@@ -65,7 +65,7 @@ export default function LoginPage() {
         <div className="w-full max-w-md">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Sign in</h2>
           <p className="text-sm text-gray-600 mb-6">
-            Don't have an account? <Link className="text-[#2563eb] font-medium" href="#">Register here</Link>
+            Don&apos;t have an account? <Link className="text-[#2563eb] font-medium" href="#">Register here</Link>
           </p>
 
           {message && <p className="text-red-500 text-sm mb-4">{message}</p>}
@@ -127,7 +127,7 @@ export default function LoginPage() {
             </div>
 
             <button className="w-full flex items-center justify-center gap-2 border border-gray-200 py-2 rounded-md text-sm font-medium hover:bg-gray-50 uppercase">
-              <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
+              <Image src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
               google
             </button>
           </form>

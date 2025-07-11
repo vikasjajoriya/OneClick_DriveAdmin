@@ -1,19 +1,14 @@
-import { use, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { useAuth } from '@/context/AuthContext';
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useAuth } from "@/context/AuthContext";
 
-export default function index() {
-  const router = useRouter()
-  const {isAuthenticated} = useAuth();
+export default function Index() {
+  const router = useRouter();
+  const { user } = useAuth();
 
-  // console.log('isAuthenticated:', isAuthenticated);
-  
-  // Redirect to login if not authenticated
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.replace('/login')
-    }
-  }, [isAuthenticated, router])
+    if (user) router.push("/dashboard");
+  }, [user]);
 
-  return null
+  return <div>Redirecting...</div>;
 }
